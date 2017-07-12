@@ -1,0 +1,11 @@
+script:
+- git config --global user.email "$GIT_EMAIL"
+- git config --global user.name "$GIT_NAME"
+- git config --global push.default simple
+- git clone --depth 1 --branch master https://$GH_TOKEN@github.com/$GH_REPO master
+- cd master
+- wget -O polis-uber.json https://pol.is/api/v3/participationInit?conversation_id=3phdex2kjf&pid=mypid
+- wait
+- git add -A . 
+- git commit -m "test" 
+- git push --quiet
